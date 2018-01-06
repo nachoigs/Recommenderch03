@@ -24,7 +24,7 @@ object RunRecommender {
     // Cambiado a local
     spark.sparkContext.setCheckpointDir("file:///tmp/")
 
-    val base = "/home/nachoigs/Downloads/profiledata_06-May-2005/"
+    val base = "/root/project/data/profiledata_06-May-2005/"
     val rawUserArtistData = spark.read.textFile(base + "user_artist_data.txt")
     val rawArtistData = spark.read.textFile(base + "artist_data.txt")
     val rawArtistAlias = spark.read.textFile(base + "artist_alias.txt")
