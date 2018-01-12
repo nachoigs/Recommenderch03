@@ -20,11 +20,11 @@ object RunRecommender {
     val spark = SparkSession.builder().getOrCreate()
     spark.sparkContext.setLogLevel("ERROR")
     // Optional, but may help avoid errors due to long lineage
-    spark.sparkContext.setCheckpointDir("hdfs://master-node:8020/tmp/")
+    spark.sparkContext.setCheckpointDir("hdfs://namenode:8020/tmp")
     // Cambiado a local
     //spark.sparkContext.setCheckpointDir("file:///tmp/")
 
-    val base = "hdfs://master-node:8020/user/hadoop/data/profiledata_06-May-2005/"
+    val base = "hdfs://namenode:8020/user/hadoop/data/profiledata_06-May-2005/"
     val rawUserArtistData = spark.read.textFile(base + "user_artist_data.txt")
     val rawArtistData = spark.read.textFile(base + "artist_data.txt")
     val rawArtistAlias = spark.read.textFile(base + "artist_alias.txt")
